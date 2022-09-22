@@ -103,14 +103,14 @@ contract PairFlash is IUniswapV3FlashCallback, PeripheryImmutableState, Peripher
     
         // WMATIC -> USDC (uni)   //pool-> WMATIC/USDC  (0.05%)
         
-       uint swap_out = transfer_wrapper_uniV3(WMATIC,USDC, amount_swap);
+       uint swap_out = transfer_wrapper_sushi(WMATIC,USDC, amount_swap);
         console.log("--- after WMATIC ->USDC swap on UNISWAPV3 ---");
         log_balances();
             
         
         // USDC -> WMATIC (uni)
         
-        swap_out = transfer_wrapper_uniV3(WETH, WMATIC, swap_out);
+        swap_out = transfer_wrapper_sushi(USDC, WMATIC,swap_out);
         console.log("--- after USDC -> WMATIC swap on UNISWAPV3 ---");
         log_balances();
 

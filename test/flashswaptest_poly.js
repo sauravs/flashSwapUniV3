@@ -151,7 +151,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   });
 
 
-  it.skip("unit test SUSHI Swap Contract" , async () => {
+  it("unit test SUSHI Swap Contract" , async () => {
     
   // approve sushiswap Swap contract  to spend 10 WMATIC which will be needed to swap with USDC
   tx = await wmatic_contract_instance.connect(loanInitiator).approve(sushi_swap_contract.address, ethers.utils.parseEther('10'));
@@ -172,7 +172,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   });
 
 
-  it.skip("unit test UNI-V3 Swap Contract" , async () => {
+  it("unit test UNI-V3 Swap Contract" , async () => {
    
   // approve uniV3 Swap contract  to spend 10 WMATIC which will be needed to swap with USDC
   tx = await wmatic_contract_instance.connect(loanInitiator).approve(uniV3_swap_contract.address, ethers.utils.parseEther('10'));
@@ -212,23 +212,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   }
 
 
-  // Advanced Approvals
-  // tx = await wmatic_contract_instance.connect(signer).approve(flash_contract.address, ethers.utils.parseEther('1000'))
-  // await tx.wait()
-
-  // tx = await wmatic_contract_instance.connect(signer).approve(sushi_swap_contract.address, ethers.utils.parseEther('1000'))
-  // await tx.wait()
-
-  // tx = await wmatic_contract_instance.connect(signer).approve(sushi_router_addr, ethers.utils.parseEther('1000'))
-  // await tx.wait()
-
-  
-  // tx = await wmatic_contract_instance.connect(signer).approve(uniV3_swap_contract.address, ethers.utils.parseEther('1000'))
-  // await tx.wait()
-
-  // tx = await wmatic_contract_instance.connect(signer).approve(uniV3_router_addr, ethers.utils.parseEther('1000'))
-  // await tx.wait()
-
+ 
 
           
  ////////////////////////////////////// Initiating Flash Loan ///////////////////////////////////////////////////////////////
@@ -236,7 +220,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   tx = await flash_contract.connect(loanInitiator).initFlash(flash_params);
   await tx.wait();
 
-  console.log('tx' , tx);
+  //console.log('tx' , tx);
 
   });
 

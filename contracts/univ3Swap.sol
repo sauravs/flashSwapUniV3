@@ -12,7 +12,7 @@ contract UniswapV3Swap {
 
     // hardcode 0.3% fee pool (most liquidity fee-tier)
     // can also use 0.05% / = 500 for lower fee but less liquidity 
-    uint24 public constant poolFee = 500; 
+    uint24 public constant poolFee = 3000;  //0.3%
 
     constructor(ISwapRouter _swapRouter) {
         swapRouter = _swapRouter;
