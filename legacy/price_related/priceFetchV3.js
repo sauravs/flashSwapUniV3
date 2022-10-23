@@ -8,7 +8,8 @@ const {
 } = require("@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json");
 
 const provider = new ethers.providers.JsonRpcProvider(
-"https://polygon-mainnet.g.alchemy.com/v2/zF-EZv66IP0tcXh9wNv4s6VmxSmW9RMN");
+  "https://eth-mainnet.alchemyapi.io/v2/cQ2Bb9ZudvJZUA0TjgzVYUOHfgrkYpa8"
+);
 
 async function getPrice(addressFrom, addressTo, amountInHuman) {
   const quoterAddress = "0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6";
@@ -38,8 +39,8 @@ const main = async () => {
 //   const addressFrom = "0x6B175474E89094C44Da98b954EedeAC495271d0F"; // DAI
 //   const addressTo = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // WETH
 
-  const addressFrom = "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"; // WETH
-  const addressTo = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"; //  DAI
+  const addressFrom = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // WETH
+  const addressTo = "0x6B175474E89094C44Da98b954EedeAC495271d0F"; //  DAI
 
   const amountInHuman = "1";
 

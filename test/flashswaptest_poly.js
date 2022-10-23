@@ -160,8 +160,31 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   console.log('allowance check',  Number(ethers.utils.formatUnits(allowanceCheck,18)));
   console.log('---------------SUSHISWAP Swap contract approval done successfully-------------------');
   
+  console.log("Waiting for swap event...");
+
   tx = await sushi_swap_contract.connect(loanInitiator).placeTrade(WMATIC_contract_addr, USDC_contract_addr, ethers.utils.parseEther('10'));
   await tx.wait();
+
+  sushi_swap_contract.on("Swap",(sender,amount0In,amount1In,amount0Out,amount1Out,to,event) => {
+    
+        console.log('Event Ouput',sender ,amount0In ,amount1In ,amount0Out,amount1Out ,to ,event);
+
+  });
+
+
+  // sushi_swap_contract.on("Swap",(from,to,value,event) => {
+      
+  //   let info = {
+  //      from : from ,
+  //      to : to ,
+  //      value : ethers.utils.formatUnits(value ,18),
+  //      event: event,
+  //   };
+
+  //   console.log(JSON.stringify(info,null,4));
+  // });
+
+
 
   console.log('---------after Swapping WMATIC to USDC on SUSHISWAP swap contract by loanInitiatorAccountAddress ------------');
   console.log('after swapping updated loanInitiatorAccountAddress WMATIC balance' , Number(ethers.utils.formatUnits((await wmatic_contract_instance.balanceOf(loanInitiatorAccountAddress)),18)));
@@ -172,7 +195,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
   });
 
 
-  it("unit test UNI-V3 Swap Contract" , async () => {
+  it.skip("unit test UNI-V3 Swap Contract" , async () => {
    
   // approve uniV3 Swap contract  to spend 10 WMATIC which will be needed to swap with USDC
   tx = await wmatic_contract_instance.connect(loanInitiator).approve(uniV3_swap_contract.address, ethers.utils.parseEther('10'));
@@ -197,7 +220,7 @@ describe("EXECUTING UNIV3-SUSHI ARB FLASH SWAP ", () => {
  
 
   
-  it ("Execute the flash loan", async () => {
+  it.skip ("Execute the flash loan", async () => {
   
     console.log("-------Ensure Flash contract successfully topped up initially with WMATIC-------", Number(ethers.utils.formatUnits((await wmatic_contract_instance.balanceOf(flash_contract.address)),18)));
     console.log("WMATIC balance of loanInitiatorAccountAddress:",WMATIC_LOAN_INITIATOR_WALLTET_ADDRESS_BALANCE_FRONTEND);
